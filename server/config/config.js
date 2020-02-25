@@ -19,3 +19,13 @@ if (process.env.NODE_ENV === "dev") {
     urlDB = process.env.MONGO_URI;
 }
 process.env.URLDB = urlDB;
+
+// ---------
+// Fecha Exp
+// ---------
+process.env.CADUCIDAD_TOKEN = '1w';
+
+// ------
+// Seed
+// ------
+process.env.SEED = process.env.SEED || "csc";
