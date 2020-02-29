@@ -24,7 +24,7 @@ app.get('/usuario', verificaToken, function(req, res) {
         .exec((err, usuarios) => {
 
             if (err) {
-                return res.status(400).json({
+                return res.status(500).json({
                     ok: false,
                     err
                 });
@@ -38,9 +38,9 @@ app.get('/usuario', verificaToken, function(req, res) {
                     conteo
                 });
 
-            })
+            });
 
-        })
+        });
 
 });
 
@@ -59,7 +59,7 @@ app.post('/usuario', [verificaToken, verificaAdmin_Role], function(req, res) {
     usuario.save((err, usuarioDB) => {
 
         if (err) {
-            return res.status(400).json({
+            return res.status(500).json({
                 ok: false,
                 err
             });
@@ -70,7 +70,7 @@ app.post('/usuario', [verificaToken, verificaAdmin_Role], function(req, res) {
         res.json({
             ok: true,
             usuario: usuarioDB
-        })
+        });
     });
 
 
@@ -85,7 +85,7 @@ app.put('/usuario/:id', [verificaToken, verificaAdmin_Role], function(req, res) 
     Usuario.findByIdAndUpdate(id, body, { new: true, runValidators: true }, (err, usuarioDB) => {
 
         if (err) {
-            return res.status(400).json({
+            return res.status(500).json({
                 ok: false,
                 err
             });
@@ -112,7 +112,7 @@ app.delete('/usuario/:id', [verificaToken, verificaAdmin_Role], function(req, re
     Usuario.findByIdAndUpdate(id, cambiaEstado, { new: true }, (err, usuarioBorrado) => {
 
         if (err) {
-            return res.status(400).json({
+            return res.status(500).json({
                 ok: false,
                 err
             });
